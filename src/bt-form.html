@@ -1,0 +1,87 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../bower_components/neon-animation/web-animations.html">
+<dom-module id="bt-form">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        padding: 10px;
+      }
+    </style>
+    <div class="input-form">
+            <iron-form id="form1" on-iron-form-presubmit="presubmit">
+                    <form action="/foo" method="post">
+                      <paper-input type="text" name="name" required label="Name" value="{{someProp.name}}"></paper-input>
+                      <!-- <input name="foo" required>
+                      <input type="checkbox" name="donuts" checked>I like donuts<br> -->
+                      <paper-checkbox name="food" value="pizza" on-change="checkboxChanged" checked>pizza</paper-checkbox><br>
+                      <paper-checkbox name="food" value="cheese" on-change="checkboxChanged">cheese</paper-checkbox>
+                      <br>
+                      <paper-dropdown-menu label="Cars" name="cars" required value="{{someProp.dropdwn}}">
+                        <paper-listbox class="dropdown-content" slot="dropdown-content">
+                          <paper-item value="volvo">Volvo</paper-item>
+                          <paper-item value="saab">Saab</paper-item>
+                          <paper-item value="fiat">Fiat</paper-item>
+                          <paper-item value="audi">Audi</paper-item>
+                        </paper-listbox>
+                      </paper-dropdown-menu>
+                      <br><br>
+                      <paper-button raised on-tap="submit">Submit</paper-button>
+                      <paper-button raised on-tap="reset">Reset</paper-button>
+                      <paper-button raised on-tap="validate">Validate</paper-button>
+                    </form>
+                    <br>
+                    <div class="output"></div>
+                  </iron-form>
+    </div>
+  </template>
+    
+  <script>
+    class BtForm extends Polymer.Element {
+        static get is() { return 'bt-form'; }
+        static get properties() {
+            return {
+                someProp: {
+                type: Object,
+                value: {}
+                },
+                showhide:{
+                    type:Boolean,
+                    value:false
+                }
+            }
+            
+            }
+            checkboxChanged(event){
+               if(event.target.checked) {
+                console.log(event.target.value);
+                }
+            }
+
+        submit(){
+            //this.$.form1.submit();
+            console.log(this.someProp);
+        };
+        // presubmit(e) {
+        //     const data = this.$.form1.request.body;
+        //     console.log('presubmit data = ', data);
+        // }
+  }
+    window.customElements.define(BtForm.is, BtForm);
+  </script>
+</dom-module>
+
+
+
+
+<!-- how to create object in polymer -->
+
+
