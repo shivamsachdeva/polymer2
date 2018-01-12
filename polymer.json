@@ -1,11 +1,12 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/my-app.html",
+  "shell": "src/basic-template.html",
   "fragments": [
-    "src/my-view1.html",
-    "src/my-view2.html",
-    "src/my-view3.html",
-    "src/my-view404.html"
+    "src/bt-home.html",
+    "src/bt-details.html",
+    "src/bt-author.html",
+    "src/bt-contact-us.html",
+    "src/bt-page-not-found.html"
   ],
   "sources": [
     "src/**/*",
