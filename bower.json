@@ -17,7 +17,10 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
     "web-animations-js": "web-animations/web-animations-js#2.2.2",
     "paper-listbox": "PolymerElements/paper-listbox#^2.0.0",
-    "neon-animation": "PolymerElements/neon-animation#^2.1.0"
+    "neon-animation": "PolymerElements/neon-animation#^2.1.0",
+    "paper-radio-button": "PolymerElements/paper-radio-button#^2.0.0",
+    "paper-radio-group": "PolymerElements/paper-radio-group#^2.0.0",
+    "vaadin-grid": "vaadin/vaadin-grid#^4.1.0"
   },
   "resolutions": {
     "polymer": "^2.0.0"

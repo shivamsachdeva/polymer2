@@ -8,6 +8,10 @@
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/iron-form/iron-form.html">
 <link rel="import" href="../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/iron-selector/iron-multi-selectable.html">
 <dom-module id="bt-form">
   <template>
     <style include="shared-styles">
@@ -22,8 +26,19 @@
                       <paper-input type="text" name="name" required label="Name" value="{{someProp.name}}"></paper-input>
                       <!-- <input name="foo" required>
                       <input type="checkbox" name="donuts" checked>I like donuts<br> -->
-                      <paper-checkbox name="food" value="pizza" on-change="checkboxChanged" checked>pizza</paper-checkbox><br>
-                      <paper-checkbox name="food" value="cheese" on-change="checkboxChanged">cheese</paper-checkbox>
+                      <!-- <iron-selector attr-for-selected="name" multi selected-values="{{someProp.food}}" selected-attribute="checked"> -->
+                            <!-- <paper-checkbox name="foo">Foo</paper-checkbox>
+                            <!-- <paper-checkbox name="bar">Bar</paper-checkbox> --> -->
+                          
+                      <paper-checkbox name="food" value="Pizza" on-change="checkboxChanged" >pizza</paper-checkbox><br>
+                      <paper-checkbox name="food" value="cheese" on-change="checkboxChanged" >cheese</paper-checkbox>
+                    <!-- </iron-selector> -->
+                      <br>
+                      <span>Gender:</span>
+                      <paper-radio-group selected="{{someProp.gender}}">
+                        <paper-radio-button name="Male" value="Male">Male</paper-radio-button>
+                        <paper-radio-button name="female" value="Female">Female</paper-radio-button>
+                      </paper-radio-group>
                       <br>
                       <paper-dropdown-menu label="Cars" name="cars" required value="{{someProp.dropdwn}}">
                         <paper-listbox class="dropdown-content" slot="dropdown-content">
@@ -61,19 +76,27 @@
             
             }
             checkboxChanged(event){
-               if(event.target.checked) {
-                console.log(event.target.value);
-                }
+            //    if(event.target.checked) {
+            //     //this.someProp.name =
+            //     console.log(event.target.value);
+            //     }
+            // else{
+            // }
+
+        // this.selectedColors = this.colors.filter(function(color) {
+        //   return this.items[color].checked;
+        // }.bind(this));
             }
 
         submit(){
-            //this.$.form1.submit();
-            console.log(this.someProp);
+            this.$.form1.submit();
+        
         };
-        // presubmit(e) {
-        //     const data = this.$.form1.request.body;
-        //     console.log('presubmit data = ', data);
-        // }
+          presubmit(e) {
+              const data = this.$.form1.request.body;
+              console.log('presubmit data = ', data);
+        //    console.log(this.someProp);
+          }
   }
     window.customElements.define(BtForm.is, BtForm);
   </script>
