@@ -20,7 +20,8 @@
     "neon-animation": "PolymerElements/neon-animation#^2.1.0",
     "paper-radio-button": "PolymerElements/paper-radio-button#^2.0.0",
     "paper-radio-group": "PolymerElements/paper-radio-group#^2.0.0",
-    "vaadin-grid": "vaadin/vaadin-grid#^4.1.0"
+    "vaadin-grid": "vaadin/vaadin-grid#^4.1.0",
+    "google-chart": "GoogleWebComponents/google-chart#^2.0.0"
   },
   "resolutions": {
     "polymer": "^2.0.0"

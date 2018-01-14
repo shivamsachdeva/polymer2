@@ -1,0 +1,98 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/google-chart/google-chart.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<dom-module id="bt-chart">
+        <template>
+          <style include="shared-styles">
+            :host {
+              display: block;
+      
+              padding: 10px;
+            }
+            .card{
+              float: left;
+              width: calc(33.33% - (40px /3));
+              margin: 20px 20px 0px 0;
+              box-sizing: border-box;
+            }
+            @media screen and (min-width:1025px){
+            .card:nth-of-type(3n){
+              margin-right: 0;
+            }
+            }
+            .articles-container:after{
+              content:"";
+              display: table;
+              clear:both;
+            }
+            @media screen and (max-width:1024px){
+              .card:nth-of-type(2n){
+                margin-right: 0;
+              }
+              .card{
+                width: calc(50% - 10px);
+              }
+              
+            }
+            @media screen and (max-width:767px){
+              .card{
+                width: 100%;
+              }
+              .card{
+                margin-right: 0;
+              } 
+            }
+          </style>
+          <div class="articles-container">
+          <h1>Charts</h1>
+          <iron-ajax id='someId' auto  url="../data.json" handle-as="json" content-type='application/json' on-response="handleResponse"></iron-ajax>
+          
+          <!-- cols='[{"label":"Month", "type":"string"}, {"label":"Days", "type":"number"}]'
+  rows='[["Jan", 21],["Feb", 28],["Mar", 31]]' -->
+  <template is='dom-if' if="{{charts}}" >
+          <google-chart
+  type='area'
+  options='{"title": "Distribution of days in 2001Q1"}'
+  data='{{charts}}'>
+</google-chart>
+</template>
+        </div>
+        </template>
+          
+        <script>
+          class BtChart extends Polymer.Element {
+            static get is() { return 'bt-chart'; }
+            static get properties() {
+              return {
+                charts: {
+                  type: Object,
+                  value: {}
+                }
+              }
+            }
+            abc(){
+            
+                var result = this.$.someId.generateRequest();
+            
+            console.log(result);
+            
+            
+        }
+            handleResponse(data){
+            // console.log(data.detail.response);
+             this.charts = data.detail.response;
+            /// this.notifyPath();
+            // this.result = data.detail.response;
+            // this.charts.cols= this.result.cols;
+            // this.charts.rows= this.result.rows;
+            // console.log(this.charts.cols);
+            // console.log(this.charts.rows);
+            // console.log(this.charts);    
+            
+        }
+          }
+     
+          window.customElements.define(BtChart.is, BtChart);
+        </script>
+      </dom-module>

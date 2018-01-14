@@ -1,0 +1,37 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<dom-module id="bt-nav">
+<template>
+<paper-button raised class="button" on-tap="goBack">Back</paper-button>
+<paper-button raised on-click="navigate">Home</paper-button>
+  </template>
+</dom-module>
+                                      
+
+
+
+  <script>
+
+    class BtNav extends Polymer.Element {
+
+      static get is() { return 'bt-nav'; }
+
+      navigate() {
+
+        window.history.pushState({}, null, '/home');
+
+        window.location.href="home";
+
+      }
+
+      goBack() {
+
+        window.history.back();
+
+      }
+
+    }
+window.customElements.define(BtNav.is, BtNav);
+</script>
